@@ -17,7 +17,7 @@ logMessage () {
 
 echo ""
 echo " ============================================================"
-echo "                    GUNBOT $GUNBOT_GITHUB_FOLDER_NAM SETUP started"
+echo "                    GUNBOT $GUNBOT_GITHUB_FOLDER_NAME SETUP started"
 echo ""
 echo "                This will take a few seconds"
 echo ""
