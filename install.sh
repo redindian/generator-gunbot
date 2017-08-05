@@ -9,10 +9,6 @@ VERSION="${array[-2]}"
 FILENAME="${array[-1]}"
 FILEBASE="${FILENAME%.*}"
 
-GUNBOT_GITHUB_FOLDER_NAME="$VERSION"
-GUNBOT_GITHUB_FILE_NAME="$FILEBASE"
-
-
 # Set functions
 # -----------------------------------
 logMessage () {
@@ -23,7 +19,7 @@ logMessage () {
 
 echo ""
 echo " ============================================================"
-echo "                    GUNBOT $GUNBOT_GITHUB_FOLDER_NAME SETUP started"
+echo "                    GUNBOT $VERSION SETUP started"
 echo ""
 echo "                This will take a few seconds"
 echo ""
@@ -54,12 +50,12 @@ npm install -g pm2 yo generator-gunbot gunbot-monitor > /dev/null 2>&1
 
 logMessage "(5/7) Install GUNBOT"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-wget -q $URL -P /opt/
-unzip -o -qq /opt/$FILENAME -d /opt/$GUNBOT_GITHUB_FILE_NAME
+wget -q $URL -o /opt/$FILENAME
+unzip -o -qq /opt/$FILENAME -d /opt/$FILEBASE
 
 # creates a symbolic link to the gunbot folder
 rm /opt/gunbot > /dev/null 2>&1
-ln -s /opt/$GUNBOT_GITHUB_FILE_NAME /opt/gunbot
+ln -s /opt/$FILEBASE /opt/gunbot
 
 # Install patches
 #wget -q https://github.com/GuntharDeNiro/BTCT/releases/download/Patch2019/Patch_Fixes_2019_all_CPU.zip -P /opt/
