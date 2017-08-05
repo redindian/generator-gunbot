@@ -36,14 +36,14 @@ module.exports = class extends Generator {
 
       // Print success or error
       process.on('close', code => {
-        if (code) {
+        if (code && code != 1) {
           this.log(`${chalk.red('ERROR!')} - There was an error starting GUNBOT for ${chalk.bold(`BTC_${currencies[index]}`)}:`);
           this.log(code);
           return;
+        } else {
+          this.log(`${chalk.green('YEAH!')} - Started GUNBOT for BTC_${currencies[index]}. :)`);
         }
-
-        this.log(`${chalk.green('YEAH!')} - Started GUNBOT for BTC_${currencies[index]}. :)`);
-
+        
         // Start next bot if there are currencies left.
         index++;
         if (!this.isCurrencyIndexValid(currencies, index)) {
