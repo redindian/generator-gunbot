@@ -4,7 +4,7 @@
 # -----------------------------------
 # https://github.com/GuntharDeNiro/BTCT/releases/download/v3.3.5/Gunbot_v3.3.5_allOs.zip
 GUNBOT_GITHUB_FOLDER_NAME="v3.3.5"
-GUNBOT_GITHUB_FILE_NAME="Gunbot_v3.3.5_allOs.zip"
+GUNBOT_GITHUB_FILE_NAME="Gunbot_v3.3.5_allOs"
 
 
 # Set functions
