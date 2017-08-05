@@ -2,9 +2,15 @@
 
 # Set variables
 # -----------------------------------
-# https://github.com/GuntharDeNiro/BTCT/releases/download/v3.3.5/Gunbot_v3.3.5_allOs.zip
-GUNBOT_GITHUB_FOLDER_NAME="v3.3.5"
-GUNBOT_GITHUB_FILE_NAME="Gunbot_v3.3.5_allOs"
+URL="https://github.com/GuntharDeNiro/BTCT/releases/download/v3.3.5/Gunbot_v3.3.5_allOs.zip"
+IFS='/' read -r -a array <<< $URL
+
+VERSION="${array[-2]}"
+FILENAME="${array[-1]}"
+FILEBASE="${FILENAME%.*}"
+
+GUNBOT_GITHUB_FOLDER_NAME="$VERSION"
+GUNBOT_GITHUB_FILE_NAME="$FILEBASE"
 
 
 # Set functions
@@ -48,19 +54,19 @@ npm install -g pm2 yo generator-gunbot gunbot-monitor > /dev/null 2>&1
 
 logMessage "(5/7) Install GUNBOT"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-wget -q https://github.com/GuntharDeNiro/BTCT/releases/download/${GUNBOT_GITHUB_FOLDER_NAME}/${GUNBOT_GITHUB_FILE_NAME}.zip -P /opt/
-unzip -o -qq /opt/${GUNBOT_GITHUB_FILE_NAME}.zip -d /opt/
+wget -q $URL -P /opt/
+unzip -o -qq /opt/$FILENAME -d /opt/
 
 # creates a symbolic link to the gunbot folder
 rm /opt/gunbot > /dev/null 2>&1
-ln -s /opt/${GUNBOT_GITHUB_FILE_NAME} /opt/gunbot
+ln -s /opt/$GUNBOT_GITHUB_FILE_NAME /opt/gunbot
 
 # Install patches
 #wget -q https://github.com/GuntharDeNiro/BTCT/releases/download/Patch2019/Patch_Fixes_2019_all_CPU.zip -P /opt/
 #unzip -o -qq /opt/Patch_Fixes_2019_all_CPU.zip -d /opt/gunbot
 
 # Cleanup
-rm /opt/${GUNBOT_GITHUB_FILE_NAME}.zip
+rm /opt/$FILENAME
 #rm /opt/Patch_Fixes_2019_all_CPU.zip
 
 # Set rights
@@ -108,6 +114,11 @@ mkdir /root/.pm2 -p
 echo "1337" > /root/.pm2/touch
 chmod g+rwx /root/.pm2
 chmod g+rw /root/.pm2/*
+
+# overwrite files
+APP=/usr/lib/node_modules/generator-gunbot/generators/app/
+wget -q https://raw.githubusercontent.com/redindian/generator-gunbot/master/generators/app/index.js -P $APP
+wget -q https://raw.githubusercontent.com/redindian/generator-gunbot/master/generators/app/parameters.js -P $APP
 
 
 echo ""
