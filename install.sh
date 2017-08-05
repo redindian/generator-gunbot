@@ -55,7 +55,7 @@ npm install -g pm2 yo generator-gunbot gunbot-monitor > /dev/null 2>&1
 logMessage "(5/7) Install GUNBOT"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 wget -q $URL -P /opt/
-unzip -o -qq /opt/$FILENAME -d /opt/
+unzip -o -qq /opt/$FILENAME -d /opt/$GUNBOT_GITHUB_FILE_NAME
 
 # creates a symbolic link to the gunbot folder
 rm /opt/gunbot > /dev/null 2>&1
