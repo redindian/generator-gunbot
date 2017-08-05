@@ -34,7 +34,7 @@ apt -y -qq upgrade > /dev/null 2>&1
 
 logMessage "(2/7) Install tools"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-apt -y -qq install curl unzip vim wget > /dev/null 2>&1
+apt -y -qq install curl unzip vim > /dev/null 2>&1
 
 
 logMessage "(3/7) Install nodejs 7.x"
@@ -50,20 +50,15 @@ npm install -g pm2 yo generator-gunbot gunbot-monitor > /dev/null 2>&1
 
 logMessage "(5/7) Install GUNBOT"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-wget -q $URL -o /opt/$FILENAME
+curl -qL $URL -o /opt/$FILENAME
 unzip -o -qq /opt/$FILENAME -d /opt/$FILEBASE
 
 # creates a symbolic link to the gunbot folder
 rm /opt/gunbot > /dev/null 2>&1
 ln -s /opt/$FILEBASE /opt/gunbot
 
-# Install patches
-#wget -q https://github.com/GuntharDeNiro/BTCT/releases/download/Patch2019/Patch_Fixes_2019_all_CPU.zip -P /opt/
-#unzip -o -qq /opt/Patch_Fixes_2019_all_CPU.zip -d /opt/gunbot
-
 # Cleanup
 rm /opt/$FILENAME
-#rm /opt/Patch_Fixes_2019_all_CPU.zip
 
 # Set rights
 chmod +x /opt/gunbot/gunthy-*
@@ -116,8 +111,8 @@ PATCH=https://raw.githubusercontent.com/redindian/generator-gunbot/master/genera
 APP=/usr/lib/node_modules/generator-gunbot/generators/app
 rm $APP/index.js
 rm $APP/parameters.js
-wget -q ${PATCH}/index.js -o $APP/index.js
-wget -q ${PATCH}/parameters.js -o $APP/parameters.js
+curl -qL ${PATCH}/index.js -o $APP/index.js
+curl -qL ${PATCH}/parameters.js -o $APP/parameters.js
 
 
 echo ""
