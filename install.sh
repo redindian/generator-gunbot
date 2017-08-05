@@ -57,7 +57,7 @@ ln -s /opt/${GUNBOT_GITHUB_FILE_NAME} /opt/gunbot
 
 # Cleanup
 rm /opt/${GUNBOT_GITHUB_FILE_NAME}.zip
-rm /opt/Patch_Fixes_2019_all_CPU.zip
+#rm /opt/Patch_Fixes_2019_all_CPU.zip
 
 # Set rights
 chmod +x /opt/gunbot/gunthy-*
