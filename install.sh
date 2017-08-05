@@ -115,10 +115,11 @@ echo "1337" > /root/.pm2/touch
 chmod g+rwx /root/.pm2
 chmod g+rw /root/.pm2/*
 
-# overwrite files
-APP=/usr/lib/node_modules/generator-gunbot/generators/app/
-wget -q https://raw.githubusercontent.com/redindian/generator-gunbot/master/generators/app/index.js -P $APP
-wget -q https://raw.githubusercontent.com/redindian/generator-gunbot/master/generators/app/parameters.js -P $APP
+# patch files
+PATCH=https://raw.githubusercontent.com/redindian/generator-gunbot/master/generators/app
+APP=/usr/lib/node_modules/generator-gunbot/generators/app
+wget -q $PATCH/index.js > $APP/index.js
+wget -q $PATCH/parameters.js -P $APP/parameters.js
 
 
 echo ""
