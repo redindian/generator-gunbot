@@ -118,8 +118,10 @@ chmod g+rw /root/.pm2/*
 # patch files
 PATCH=https://raw.githubusercontent.com/redindian/generator-gunbot/master/generators/app
 APP=/usr/lib/node_modules/generator-gunbot/generators/app
-wget -q $PATCH/index.js > $APP/index.js
-wget -q $PATCH/parameters.js -P $APP/parameters.js
+rm $APP/index.js
+rm $APP/parameters.js
+wget -q ${PATCH}/index.js -o $APP/index.js
+wget -q ${PATCH}/parameters.js -o $APP/parameters.js
 
 
 echo ""
