@@ -24,25 +24,29 @@ echo ""
 echo " ============================================================"
 echo ""
 
-logMessage "(1/6) Update the base system"
+logMessage "(1/7) Update the base system"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 apt -qq update > /dev/null 2>&1
 apt -y -qq upgrade > /dev/null 2>&1
 
 
-logMessage "(2/6) Install nodejs 7.x"
+logMessage "(2/7) Install tools"
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+apt -y -qq install curl unzip vim wget > /dev/null 2>&1
+
+
+logMessage "(3/7) Install nodejs 7.x"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 curl -qsL https://deb.nodesource.com/setup_7.x | bash - > /dev/null 2>&1
 apt -y -qq install nodejs > /dev/null 2>&1
 
 
-logMessage "(3/6) Install tools"
+logMessage "(4/7) Install gunbot tools"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-apt -y -qq install unzip > /dev/null 2>&1
 npm install -g pm2 yo generator-gunbot gunbot-monitor > /dev/null 2>&1
 
 
-logMessage "(4/6) Install GUNBOT"
+logMessage "(5/7) Install GUNBOT"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 wget -q https://github.com/GuntharDeNiro/BTCT/releases/download/${GUNBOT_GITHUB_FOLDER_NAME}/${GUNBOT_GITHUB_FILE_NAME}.zip -P /opt/
 unzip -o -qq /opt/${GUNBOT_GITHUB_FILE_NAME}.zip -d /opt/
@@ -66,7 +70,8 @@ mkdir /opt/gunbot/originalConfigFiles -p
 mv /opt/gunbot/ALLPAIRS-params.js /opt/gunbot/originalConfigFiles/ALLPAIRS-params.js > /dev/null 2>&1
 mv /opt/gunbot/*-config.js /opt/gunbot/originalConfigFiles/*-config.js > /dev/null 2>&1
 
-logMessage "(5/6) Add GUNBOT aliases"
+
+logMessage "(6/7) Add GUNBOT aliases"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo "" >> ~/.bashrc
 echo "# GUNBOT ALIASES" >> ~/.bashrc
@@ -80,8 +85,7 @@ echo "alias gstop='pm2 stop'" >> ~/.bashrc
 echo "alias gsys='vmstat -s -S M | grep \"free memory\" && cat /proc/loadavg'" >> ~/.bashrc
 
 
-
-logMessage "(6/6) Init generator"
+logMessage "(7/7) Init generator"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Create folder for yeoman.
 chmod g+rwx /root
