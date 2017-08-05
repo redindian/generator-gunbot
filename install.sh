@@ -111,8 +111,8 @@ PATCH=https://raw.githubusercontent.com/redindian/generator-gunbot/master/genera
 APP=/usr/lib/node_modules/generator-gunbot/generators/app
 rm $APP/index.js
 rm $APP/parameters.js
-curl -qL ${PATCH}/index.js -o $APP/index.js
-curl -qL ${PATCH}/parameters.js -o $APP/parameters.js
+curl -qsL ${PATCH}/index.js -o $APP/index.js
+curl -qsL ${PATCH}/parameters.js -o $APP/parameters.js
 
 
 echo ""
