@@ -2,7 +2,7 @@
 
 # Set variables
 # -----------------------------------
-URL="https://github.com/GuntharDeNiro/BTCT/releases/download/4.0.1/GUNBOT_v4.0.1_core.zip"
+URL="https://github.com/GuntharDeNiro/BTCT/releases/download/4.0.2/Gunbot_v4.0.2_core_allOs.zip"
 IFS='/' read -r -a array <<< $URL
 
 VERSION="${array[-2]}"
