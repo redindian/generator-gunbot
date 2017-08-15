@@ -59,14 +59,18 @@ ln -s /opt/$FILEBASE /opt/gunbot
 
 # Cleanup
 rm /opt/$FILENAME
+# Remove other executables
+rm /opt/gunbot/gunthy-arm
+rm /opt/gunbot/gunthy-macos
+rm /opt/gunbot/gunthy.exe
 
 # Set rights
 chmod +x /opt/gunbot/gunthy-*
 # Move original config files
-mkdir /opt/gunbot/originalConfigFiles -p
-mv /opt/gunbot/ALLPAIRS-params.js /opt/gunbot/originalConfigFiles/ALLPAIRS-params.js > /dev/null 2>&1
-mv /opt/gunbot/*-config.js /opt/gunbot/originalConfigFiles/*-config.js > /dev/null 2>&1
-
+mv /opt/gunbot/config.js /opt/gunbot/config.js.default > /dev/null 2>&1
+#mkdir /opt/gunbot/originalConfigFiles -p
+#mv /opt/gunbot/ALLPAIRS-params.js /opt/gunbot/originalConfigFiles/ALLPAIRS-params.js > /dev/null 2>&1
+#mv /opt/gunbot/*-config.js /opt/gunbot/originalConfigFiles/*-config.js > /dev/null 2>&1
 
 logMessage "(6/7) Add GUNBOT aliases"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
