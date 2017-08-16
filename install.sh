@@ -2,7 +2,8 @@
 
 # Set variables
 # -----------------------------------
-URL="https://github.com/GuntharDeNiro/BTCT/releases/download/4.0.3/Gunbotv4.0.3_core_allOs_patched.zip"
+LATEST=`curl -s https://github.com/GuntharDeNiro/BTCT/releases | grep -E -i -o '/releases/download([^"]+).zip' | head -n 1`
+URL="https://github.com/GuntharDeNiro/BTCT$LATEST"
 IFS='/' read -r -a array <<< $URL
 
 VERSION="${array[-2]}"
