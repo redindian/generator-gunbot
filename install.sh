@@ -2,7 +2,7 @@
 
 # Set variables
 # -----------------------------------
-LATEST=`curl -s https://github.com/GuntharDeNiro/BTCT/releases | grep -E -i -o '/releases/download([^"]+).zip' | head -n 1`
+LATEST=`curl -s https://github.com/GuntharDeNiro/Gunthy/releases | grep -E -i -o '/releases/download([^"]+).zip' | head -n 1`
 URL="https://github.com/GuntharDeNiro/BTCT$LATEST"
 IFS='/' read -r -a array <<< $URL
 
